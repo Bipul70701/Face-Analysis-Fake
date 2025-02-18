@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BBFXM83KSX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-BBFXM83KSX');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FaceRate Analysis Overview</title>
+    <link rel="stylesheet" href="css/bait.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Top section with rating and profile image -->
+        <header class="top-section">
+            <div class="rating-info">
+                <h1 class="rating">You're a <span class="main-score">7.9</span></h1>
+                <p class="rank">Top <span class="percentblur">11</span>% of people</p>
+            </div>
+            <div class="profile-container">
+                <img id="profileImage" src="path/to/default/profile.jpg" alt="Profile Image" class="profile-img">
+            </div>
+        </header>
+
+        <!-- Feature List Section -->
+        <section class="feature-list" style="align-content: center;">
+            <!-- Cheekbones -->
+            <div class="feature-item">
+                <div class="feature-icon">😊</div>
+                <div class="feature-info2">
+                    <h3>Cheekbones</h3>
+                    <p>Balanced and Prominent</p>
+                </div>
+                <div class="score-circle">
+                    <div class="circle">
+                        <span class="score-text">10/10</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Forehead -->
+            <div class="feature-item">
+                <div class="feature-icon">🤔</div>
+                <div class="feature-info2">
+                    <h3>Forehead</h3>
+                    <p>Proportional</p>
+                </div>
+                <div class="score-circle">
+                    <div class="circle">
+                        <span class="score-text">10/10</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Face -->
+            <div class="feature-item">
+                <div class="feature-icon">😀</div>
+                <div class="feature-info2">
+                    <h3>Face</h3>
+                    <p>Well Balanced</p>
+                </div>
+                <div class="score-circle">
+                    <div class="circle">
+                        <span class="score-text">10/10</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Eyebrows -->
+            <div class="feature-item">
+                <div class="feature-icon">🤨</div>
+                <div class="feature-info2">
+                    <h3>Eyebrows</h3>
+                    <p class="blurred">Well Defined</p>
+                </div>
+                <div class="score-circle">
+                    <div class="circle">
+                        <span class="score-text">10/10</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Eyes (Blurred) -->
+            <div class="feature-item">
+                <div class="feature-icon">👀</div>
+                <div class="feature-info2">
+                    <h3>Eyes</h3>
+                    <p class="blurred">Symmetrical</p>
+                </div>
+                <div class="score-circle">
+                    <div class="circle">
+                        <span class="score-text">10/10</span>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="feature-item">
+                <div class="feature-icon">🧴</div>
+                <div class="feature-info2">
+                    <h3>Skin</h3>
+                    <p class="blurred">Smooth</p>
+                </div>
+                <div class="score-circle">
+                    <div class="circle">
+                        <span class="score-text">10/10</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lips -->
+            <div class="feature-item">
+                <div class="feature-icon">🫦</div>
+                <div class="feature-info2">
+                    <h3>Lips</h3>
+                    <p class="blurred">Full</p>
+                </div>
+                <div class="score-circle">
+                    <div class="circle">
+                        <span class="score-text">10/10</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Nose -->
+            <div class="feature-item">
+                <div class="feature-icon">👃🏼</div>
+                <div class="feature-info2">
+                    <h3>Nose</h3>
+                    <p class="blurred">Well Balanced</p>
+                </div>
+                <div class="score-circle">
+                    <div class="circle">
+                        <span class="score-text">10/10</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chin -->
+            <div class="feature-item">
+                <div class="feature-icon">🧑‍🦲</div>
+                <div class="feature-info2">
+                    <h3>Chin</h3>
+                    <p class="blurred">Strongly Defined</p>
+                </div>
+                <div class="score-circle">
+                    <div class="circle">
+                        <span class="score-text">10/10</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Jawline (Blurred) -->
+            <div class="feature-item">
+                <div class="feature-icon">🗿</div>
+                <div class="feature-info2">
+                    <h3>Jawline</h3>
+                    <p class="blurred">Well Defined</p>
+                </div>
+                <div class="score-circle">
+                    <div class="circle">
+                        <span class="score-text">10/10</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Button Section -->
+        <div class="button-container">
+            <a href="/fresults" class="secondary-action-button">View Analysis</a>
+        </div>
+
+        <!-- Unlock Analysis Button -->
+        <a href="https://buy.stripe.com/14k0195K0e9ydq0148" class="view-analysis" onclick="logStripeClick()">
+            <button>Unlock Analysis</button>
+        </a>
+    </div>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const storedImage = localStorage.getItem('uploadedImage');
+            if (storedImage) {
+                document.getElementById('profileImage').src = storedImage;
+            } else {
+                alert('No image found in localStorage. Please upload an image.');
+            }
+        });
+
+        
+        function logStripeClick() {
+        // Send a POST request to the server endpoint to log the click
+        fetch('/log-stripe-click-from-main', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(response => {
+            if (!response.ok) {
+                console.error('Failed to log Stripe click');
+            }
+        }).catch(error => {
+            console.error('Error:', error);
+        });
+        }
+    </script>
+</body>
+</html>

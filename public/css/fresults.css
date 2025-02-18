@@ -1,0 +1,172 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background-color: #1c1c1e;
+    color: #e5e5e5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Container */
+.container {
+    width: 100%;
+    max-width: 400px;
+    background-color: #2c2c2e;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.page-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #e5e5e5;
+}
+
+.back-btn {
+    color: #00ff88;
+    font-size: 1rem;
+    text-decoration: none;
+}
+
+/* Feature Section */
+.feature-section {
+    margin-bottom: 20px;
+}
+
+/* Feature Item */
+.feature-item {
+    background-color: #333;
+    padding: 15px;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.feature-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.feature-title {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 5px;
+}
+
+.view-advice {
+    font-size: 0.7rem;
+    font-weight: bold;
+    color: #bbbbbb;
+    text-decoration: none;
+    display: inline-block;
+    margin-left: auto;
+    text-align: right;
+}
+
+/* Score Section */
+.score-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.score {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #ffffff;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+}
+
+
+.score2 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #ffffff;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+    filter: blur(6px);
+}
+
+.score-label {
+    font-size: 0.8rem;
+    color: #ffffff;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+}
+
+.score-label2 {
+    font-size: 0.8rem;
+    color: #bbbbbb;
+    filter: blur(3px);
+}
+
+.percentile {
+    font-size: 0.8rem;
+    color: #ffffff;
+}
+
+.percentile2 {
+    font-size: 0.8rem;
+    color: #aaaaaa;
+    filter: blur(4px);
+}
+/* Progress Bar */
+.progress-bar {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    height: 5px;
+    width: 100%;
+    margin-top: 5px;
+}
+
+.progress {
+    background-color: #00ff88;
+    height: 5px;
+    border-radius: 5px;
+    transition: width 0.4s ease;
+}
+
+
+/* Unlock Analysis Button */
+.unlock-analysis {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.unlock-button {
+    padding: 12px 30px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #00aaff;
+    border: none;
+    border-radius: 25px;
+    text-decoration: none;
+    box-shadow: 0px 4px 10px rgba(0, 170, 255, 0.4);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.unlock-button:hover {
+    background-color: #007acc;
+    box-shadow: 0px 6px 15px rgba(0, 170, 255, 0.6);
+}

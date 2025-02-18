@@ -1,0 +1,214 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #000;
+    color: #fff;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure the body takes the full height */
+  }
+  
+  #hero-section {
+    flex: 1; /* Allow hero section to take the available space */
+    width: 100%;
+    position: relative;
+    background: linear-gradient(135deg, #050505, #111);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .hero-content {
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+  }
+  
+  .hero-content h1 {
+    font-size: 2.5rem;
+    color: #fff;
+    text-transform: uppercase;
+    animation: glow 1.5s infinite alternate;
+  }
+  
+  .hero-content p {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 1rem;
+  }
+  
+  /* Upload Button Styled as Label */
+  .upload-button {
+    display: inline-block;
+    margin-top: 2rem;
+    padding: 1rem;
+    background-color: #ff6bb7;
+    color: white;
+    border-radius: 30px;
+    font-size: 1rem;
+    cursor: pointer;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(255, 105, 180, 0.7);
+    width: 100%; /* Full width for mobile */
+    max-width: 300px;
+  }
+  
+  .hidden-file-input {
+    display: none; /* Hide the actual file input */
+  }
+  
+  /* Image Preview Styles */
+  .image-preview img {
+    margin-top: 30px;
+    width: 100%;                /* Take up the full width of the container */
+    max-width: 300px;            /* Limit the maximum width to 300px */
+    height: auto;                /* Maintain the aspect ratio */
+    border-radius: 15px;         /* Same border radius as before */
+    object-fit: contain;         /* Ensures the image fits without distortion */
+    box-shadow: 0 0 20px rgba(255, 105, 180, 0.7);
+  }
+  
+  /* CTA Button (Start Analyzing) */
+  .cta-button {
+    margin-top: 1.5rem;
+    padding: 1rem 2rem;
+    background-color: #ff6bb7;
+    color: white;
+    border-radius: 30px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(255, 105, 180, 0.7);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .cta-button.hidden {
+    display: none; /* Start Analyzing button is hidden by default */
+  }
+  
+  .cta-button:hover {
+    background-color: #ff4ca1;
+    transform: scale(1.05);
+  }
+  
+  /* Glow Animation */
+  @keyframes glow {
+    0% {
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    }
+    100% {
+      text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+    }
+  }
+  
+  /* Footer Styles */
+  footer {
+    padding: 1rem;
+    background-color: #111;
+    text-align: center;
+    color: #888;
+    font-size: 0.9rem;
+    width: 100%;
+    margin-top: auto; /* Push the footer to the bottom */
+  }
+  
+  /* Loading Overlay */
+  .loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  /* Loading Content */
+  .loading-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Ensure the spinner and text are centered */
+    text-align: center;
+  }
+  
+  /* Spinner */
+  .loading-spinner {
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid #ff007f; /* Pink color */
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    animation: spin 1.5s linear infinite;
+    margin-bottom: 20px;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  /* Loading Text */
+  .loading-text {
+    font-size: 1.4rem;
+    color: #ff007f; /* Pink color */
+    margin-bottom: 10px;
+  }
+  
+  .loading-subtext {
+    font-size: 1rem;
+    color: #dddddd;
+    margin-bottom: 20px;
+  }
+  
+  /* Timer */
+  .loading-timer {
+    font-size: 1rem;
+    color: #ffffff;
+  }
+  
+  #timer {
+    font-weight: bold;
+    color: #ff007f; /* Pink color */
+  }
+  
+  .hidden {
+    display: none !important; /* Ensure hidden elements are fully hidden */
+  }
+  
+  /* Progress Bar */
+  .loading-bar {
+    position: relative;
+    width: 100%;
+    max-width: 300px;
+    height: 20px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
+  }
+  
+  .progress {
+    width: 0;
+    height: 100%;
+    background-color: #ff6bb7; /* Pink color */
+    border-radius: 10px;
+    line-height: 20px;
+    text-align: center;
+    color: white;
+    font-size: 14px;
+    box-shadow: 0 0 10px rgba(255, 105, 180, 0.7);
+    transition: width 0.5s ease-in-out; /* Smooth transition */
+  }

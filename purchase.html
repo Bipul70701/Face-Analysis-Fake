@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script>
+        (function() {
+            const IPINFO_TOKEN = '2dc4ea6566b86b';
+            const STRIPE_PUBLIC_KEY = 'pk_live_51K9XkHCO9ZjdjgC8YT8h1VCGtCqpQuItLAPLCOun2z6kOAqqYKTZTDCSDYFjXtTPIVZ2jKQULByhFXxuhttw8l2H00Gpwt0WJZ'; // Replace with actual key
+            const RAZORPAY_KEY_ID = 'rzp_live_9UWruJaDxzNvWZ';     // Replace with actual key
+
+            window.pricingConfig = {
+                in: {
+                    price: '₹199',
+                    endpoint: '/create-razorpay-order',
+                    gateway: 'razorpay'
+                },
+                default: {
+                    price: '$10',
+                    endpoint: '/create-stripe-session',
+                    gateway: 'stripe'
+                }
+            };
+
+            async function handlePayment(event) {
+                event.preventDefault();
+                const config = window.pricingConfig[window.userCountry];
+                
+                try {
+                    const response = await fetch(config.endpoint, { method: 'POST' });
+                    if (!response.ok) throw new Error('Payment failed');
+                    const data = await response.json();
+
+                    if (config.gateway === 'stripe') {
+                        const stripe = Stripe(STRIPE_PUBLIC_KEY);
+                        const { error } = await stripe.redirectToCheckout({ sessionId: data.id });
+                        if (error) throw error;
+                    } 
+                    else if (config.gateway === 'razorpay') {
+                        const options = {
+                            key: RAZORPAY_KEY_ID,
+                            amount: data.amount,
+                            currency: data.currency,
+                            order_id: data.id,
+                            name: "FaceRate.co",
+                            description: "Premium Plan Purchase",
+                            handler: function(response) {
+                                window.location.href = `/payment-success?gateway=razorpay&payment_id=${response.razorpay_payment_id}&razorpay_order_id=${response.razorpay_order_id}&razorpay_signature=${response.razorpay_signature}`;
+                            },
+                            prefill: {
+                                email: "user@example.com" // Consider collecting this dynamically
+                            }
+                        };
+                        new Razorpay(options).open();
+                    }
+                } catch (error) {
+                    console.error('Payment Error:', error);
+                    window.location.href = '/payment-failed';
+                }
+            }
+
+            // Country detection and UI update remains similar
+            fetch(`https://ipinfo.io/json?token=${IPINFO_TOKEN}`)
+                .then(response => response.json())
+                .then(data => {
+                    window.userCountry = data.country === 'IN' ? 'in' : 'default';
+                })
+                .catch(() => {
+                    window.userCountry = 'default';
+                })
+                .finally(() => {
+                    console.log('Detected country:', window.userCountry);
+                    document.body.style.visibility = 'visible';
+
+                    const updatePricing = () => {
+                        const config = window.pricingConfig[window.userCountry] || window.pricingConfig.default;
+                        
+                        // Update price display
+                        const priceEl = document.querySelector('.price');
+                        priceEl.classList.remove('skeleton');
+                        priceEl.textContent = config.price;
+
+                        // Update payment button
+                        const paymentButton = document.createElement('button');
+                        paymentButton.className = 'select-button';
+                        paymentButton.textContent = `Choose Premium`;
+                        paymentButton.onclick = handlePayment;
+                        
+                        // Replace skeleton loader with actual button
+                        const card = document.querySelector('.plan-card');
+                        const oldButton = card.lastElementChild;
+                        card.replaceChild(paymentButton, oldButton);
+                    };
+
+                    // Handle DOM readiness
+                    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+                        updatePricing();
+                    } else {
+                        document.addEventListener('DOMContentLoaded', updatePricing);
+                    }
+                });
+        })();
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>Premium Plan Selection</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        @keyframes shimmer {
+            100% { transform: translateX(100%); }
+        }
+
+        .skeleton {
+            background: #e0e0e0;
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skeleton::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(90deg,
+                rgba(255,255,255,0) 0%,
+                rgba(255,255,255,0.3) 50%,
+                rgba(255,255,255,0) 100%
+            );
+            animation: shimmer 1.5s infinite;
+        }
+
+        body {
+            visibility: hidden;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fff 100%);
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 90%;
+            width: 100%;
+        }
+
+        .plan-card {
+            background: linear-gradient(135deg, #ffccdc, #ffe6e6);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .plan-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 8px 18px rgba(255, 64, 129, 0.4);
+            border-color: #ff4081;
+        }
+
+        .plan-header {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 12px;
+            color: #ff4081;
+        }
+
+        .price {
+            font-size: 2rem;
+            font-weight: bold;
+            margin: 12px 0;
+            color: #ff4081;
+            text-shadow: 0 0 6px rgba(255, 64, 129, 0.7);
+        }
+
+        .description {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .features {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 20px;
+        }
+
+        .features li {
+            font-size: 1rem;
+            margin: 8px 0;
+            color: #333;
+            display: flex;
+            align-items: center;
+        }
+
+        .features li::before {
+            content: "✓ ";
+            color: #ff4081;
+            margin-right: 5px;
+        }
+
+        .select-button {
+            padding: 12px 24px;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #ffffff;
+            background: linear-gradient(135deg, #ff4081, #ff9a9e);
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .select-button:hover {
+            background: linear-gradient(135deg, #ff7292, #ff4081);
+            box-shadow: 0 6px 15px rgba(255, 64, 129, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="plan-card">
+            <div class="plan-header">Premium Plan</div>
+            <div class="price skeleton" style="width: 80px; height: 40px; margin: 12px auto"></div>
+            <p class="description">Perfect for beauty seekers requiring advanced tools and priority support.</p>
+            <ul class="features">
+                <li>Advanced Analysis Tools</li>
+                <li>Priority Customer Support</li>
+                <li>15 Premium Features</li>
+                <li>Exclusive Content Access</li>
+            </ul>
+            <div class="skeleton" style="width: 150px; height: 40px; margin: 0 auto"></div>
+        </div>
+    </div>
+</body>
+</html>

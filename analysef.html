@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BBFXM83KSX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-BBFXM83KSX');
+</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upload Your Image - FaceRate</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <!-- External CSS -->
+  <link rel="stylesheet" href="css/analyze.css">
+</head>
+<body>
+
+  <!-- Hero Section for Image Upload -->
+  <section id="hero-section">
+    <div class="hero-content">
+      <h1>FaceRate</h1>
+      <p>Upload or take a picture to start analysis</p>
+
+      <!-- Image Upload Options -->
+      <label for="imageUpload" class="upload-button">
+        Choose from Library or Take a Picture
+      </label>
+      <input type="file" id="imageUpload" accept="image/*" class="hidden-file-input">
+
+      <!-- Image Preview -->
+      <div id="imagePreview" class="image-preview"></div>
+      
+      <!-- Button to start analysis -->
+      <button id="startButton" class="cta-button hidden">Start Analyzing</button>
+    </div>
+  </section>
+
+  <!-- Loading Overlay for Image Analysis -->
+<!-- Loading Overlay for Image Analysis -->
+<div id="loadingOverlay" class="loading-overlay hidden">
+  <div class="loading-content">
+      <div class="loading-bar">
+          <div id="progressBar" class="progress">0%</div>
+      </div>
+      <p class="loading-text">Analyzing your image...</p>
+      <blockquote class="loading-quote" id="loadingQuote">"Please be patient..."</blockquote>
+      <p class="loading-subtext">This usually takes about 1 minute.</p>
+      <p class="loading-timer">Elapsed Time: <span id="timer">00:00</span></p>
+  </div>
+</div>
+
+
+
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 FaceRate. All rights reserved.</p>
+  </footer>
+
+  <!-- JavaScript File -->
+  <script src="js/analysef.js"></script>
+  
+</body>
+</html>
