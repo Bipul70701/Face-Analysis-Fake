@@ -27,12 +27,12 @@ app.get('/payment-success', async (req, res) => {
       if (gateway === 'stripe') {
         const session = await stripe.checkout.sessions.retrieve(session_id);
         if (session.payment_status === 'paid') {
-          return res.redirect('/success.html');
+          return res.redirect('/success');
         }
       } else if (gateway === 'razorpay') {
         const payment = await razorpay.payments.fetch(payment_id);
         if (payment.status === 'captured') {
-          return res.redirect('/success.html');
+          return res.redirect('/success');
         }
       }
       
@@ -114,6 +114,10 @@ app.get('/purchase', (req, res) => {
 
 app.get('/fresults', (req, res) => {
     res.sendFile(__dirname+"/fresults.html");
+  });
+
+  app.get('/success', (req, res) => {
+    res.sendFile(__dirname+"/success.html");
   });
 
 
