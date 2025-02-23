@@ -21,29 +21,31 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
 app.get('/payment-success', async (req, res) => {
-    const { gateway, payment_id, razorpay_order_id, razorpay_signature } = req.query;
-  
-    try {
-      if (gateway === 'stripe') {
-        const session = await stripe.checkout.sessions.retrieve(session_id);
-        if (session.payment_status === 'paid') {
-          return res.redirect('/success');
-        }
-      } else if (gateway === 'razorpay') {
-        const payment = await razorpay.payments.fetch(payment_id);
-        if (payment.status === 'captured') {
-          return res.redirect('/success');
-        }
-      }
-      
-      // If payment verification fails
-      res.redirect('/payment-failed');
-    } catch (err) {
-      console.error('Verification error:', err);
-      res.redirect('/payment-failed');
-    }
-  });
+  // Add session_id to destructured parameters
+  const { gateway, session_id, payment_id, razorpay_order_id, razorpay_signature } = req.query;
 
+  try {
+    if (gateway === 'stripe') {
+      const session = await stripe.checkout.sessions.retrieve(session_id);
+      if (session.payment_status === 'paid') {
+        return res.redirect('/success');
+      }
+    } else if (gateway === 'razorpay') {
+      const payment = await razorpay.payments.fetch(payment_id);
+      if (payment.status === 'captured') {
+        return res.redirect('/success');
+      }
+    }
+    
+    res.redirect('/payment-failed');
+  } catch (err) {
+    console.error('Verification error:', err);
+    res.redirect('/payment-failed');
+  }
+});
+
+
+// In /create-stripe-session endpoint
   app.post('/create-stripe-session', async (req, res) => {
     try {
       const session = await stripe.checkout.sessions.create({
@@ -52,7 +54,7 @@ app.get('/payment-success', async (req, res) => {
           price_data: {
             currency: 'usd',
             product_data: { name: 'Premium Plan' },
-            unit_amount: 1000, // $10.00
+            unit_amount: 499, 
           },
           quantity: 1,
         }],
@@ -60,7 +62,7 @@ app.get('/payment-success', async (req, res) => {
         success_url: `${process.env.DOMAIN}/payment-success?gateway=stripe&session_id={CHECKOUT_SESSION_ID}`,
         cancel_url: `${process.env.DOMAIN}/payment-failed`,
       });
-  
+
       res.json({ id: session.id });
     } catch (err) {
       res.status(500).json({ error: err.message });
