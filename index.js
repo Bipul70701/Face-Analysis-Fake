@@ -1,13 +1,13 @@
 const express = require('express');
 const dotenv = require('dotenv');
-const cors = require('cors');
-app.use(cors({ origin: true }));
 
 // Load environment variables
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+const cors = require('cors');
+app.use(cors({ origin: true }));
 
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
