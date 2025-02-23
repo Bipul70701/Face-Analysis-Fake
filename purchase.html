@@ -28,7 +28,10 @@
                 
                 try {
                     const response = await fetch(config.endpoint, { method: 'POST' });
-                    if (!response.ok) throw new Error('Payment failed');
+                    if (!response.ok) {
+                        const errorText = await response.text();
+                        throw new Error(`Server error: ${errorText}`);
+                    }
                     const data = await response.json();
 
                     if (config.gateway === 'stripe') {
@@ -54,7 +57,8 @@
                         new Razorpay(options).open();
                     }
                 } catch (error) {
-                    console.error('Payment Error:', error);
+                    console.error('Full payment error:', error);
+                    alert(`Payment failed: ${error.message}`);
                     window.location.href = '/payment-failed';
                 }
             }
