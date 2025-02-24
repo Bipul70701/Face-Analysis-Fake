@@ -30,12 +30,12 @@ app.get('/payment-success', async (req, res) => {
     if (gateway === 'stripe') {
       const session = await stripe.checkout.sessions.retrieve(session_id);
       if (session.payment_status === 'paid') {
-        return res.redirect('/success');
+        return res.sendFile(__dirname+"/success.html");
       }
     } else if (gateway === 'razorpay') {
       const payment = await razorpay.payments.fetch(payment_id);
       if (payment.status === 'captured') {
-        return res.redirect('/success');
+        return res.sendFile(__dirname+"/success.html");
       }
     }
     
@@ -119,12 +119,6 @@ app.get('/purchase', (req, res) => {
 app.get('/fresults', (req, res) => {
     res.sendFile(__dirname+"/fresults.html");
   });
-
-  app.get('/success', (req, res) => {
-    res.sendFile(__dirname+"/success.html");
-  });
-
-
 
 app.get('/payment-failed', (req, res) => {
     res.send('Payment failed - please try again');

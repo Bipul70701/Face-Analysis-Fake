@@ -6,45 +6,82 @@
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-
         gtag('config', 'G-BBFXM83KSX');
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FaceAI Feature Breakdown</title>
     <link rel="stylesheet" href="css/success.css">
+    <style>
+        /* Dropdown Styles */
+        .advice-dropdown {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background-color: #3a3a3c;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+
+        .advice-dropdown.active {
+            max-height: 500px;
+        }
+
+        .dropdown-title {
+            font-size: 1.1rem;
+            color: #00ff88;
+            padding: 15px 15px 0 15px;
+            margin-bottom: 10px;
+        }
+
+        .dropdown-points {
+            list-style: none;
+            padding: 0 15px 15px 15px;
+        }
+
+        .dropdown-points li {
+            font-size: 0.9rem;
+            color: #e5e5e5;
+            margin-bottom: 8px;
+            padding-left: 15px;
+            position: relative;
+            line-height: 1.4;
+        }
+
+        .dropdown-points li::before {
+            content: "•";
+            color: #00ff88;
+            position: absolute;
+            left: 0;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <!-- Feature Breakdown Header -->
         <header class="header">
             <h1 class="page-title">Your Results</h1>
         </header>
 
-        <!-- Feature Details Section -->
         <section class="feature-section">
-
+            <!-- Overall Score -->
             <div class="feature-item">
                 <div class="feature-info">
                     <h2 class="feature-title">🙂 Overall</h2>
-                    <!-- <a class="view-advice">View Advice ›</a> -->
                 </div>
                 <div class="score-section">
                     <span class="score">7.8</span>
-                    <!-- <div class="score-label">Not-paid</div> -->
                     <div class="percentile">Top 20% Of People</div>
                 </div>
                 <div class="progress-bar">
-                    <div class="progress" style="width: 1%;"></div>
+                    <div class="progress" style="width: 78%;"></div>
                 </div>
             </div>
 
-
-
-                        <div class="feature-item">
+            <!-- Features -->
+            <div class="feature-item">
                 <div class="feature-info">
                     <h2 class="feature-title">🤨 Eyebrows</h2>
-                    <a  class="view-advice">View Advice ›</a>
+                    <a class="view-advice">View Advice ›</a>
                 </div>
                 <div class="score-section">
                     <span class="score">7.3</span>
@@ -54,11 +91,24 @@
                 <div class="progress-bar">
                     <div class="progress" data-score="7.3"></div>
                 </div>
+                <div class="advice-dropdown">
+                    <h2 class="dropdown-title">Eyebrows Glow-Up Guide</h2>
+                    <ul class="dropdown-points">
+                        <li>Shape for Your Face – Find a brow shape that complements your face</li>
+                        <li>Grooming & Maintenance – Pluck stray hairs professionally</li>
+                        <li>Fill Them Right – Use a brow pencil for natural look</li>
+                        <li>Brow Growth – Apply castor oil for thicker growth</li>
+                        <li>Highlight Under the Brow – Subtle highlighter for lifted effect</li>
+                    </ul>
+                </div>
             </div>
+
+            <!-- Repeat similar structure for other features -->
+            <!-- Eyes -->
             <div class="feature-item">
                 <div class="feature-info">
                     <h2 class="feature-title">👀 Eyes</h2>
-                    <a  class="view-advice">View Advice ›</a>
+                    <a class="view-advice">View Advice ›</a>
                 </div>
                 <div class="score-section">
                     <span class="score">7.8</span>
@@ -68,7 +118,18 @@
                 <div class="progress-bar">
                     <div class="progress" data-score="7.8"></div>
                 </div>
+                <div class="advice-dropdown">
+                    <h2 class="dropdown-title">Eyes Glow-Up Guide</h2>
+                    <ul class="dropdown-points">
+                        <li>Brighten Dark Circles – Use caffeine-based eye cream</li>
+                        <li>Eyelash Care – Castor oil for thicker lashes</li>
+                        <li>Eye Makeup Enhancement – Eyeliner for eye shape</li>
+                        <li>Whiten Your Eyes – Reduce redness with eye drops</li>
+                        <li>Eye Exercises – Practice focus exercises</li>
+                    </ul>
+                </div>
             </div>
+
             <div class="feature-item">
                 <div class="feature-info">
                     <h2 class="feature-title">👃🏼 Nose</h2>
@@ -82,7 +143,18 @@
                 <div class="progress-bar">
                     <div class="progress" data-score="7.1"></div>
                 </div>
+                <div class="advice-dropdown">
+                    <h2 class="dropdown-title">Nose Glow-Up Guide</h2>
+                    <ul class="dropdown-points">
+                    <li>Highlight & Contour – Use light highlighter on the bridge and a soft contour on the sides."</li>
+                    <li>Clear Blackheads – Use a clay mask or salicylic acid-based cleanser.</li>
+                    <li>Hydration & Moisturizing – Keep your nose skin smooth with a gentle moisturizer.</li>
+                    <li>Massage Techniques – Regular massages can slightly improve the shape and definition over time.</li>
+                    <li>Posture Awareness – Keeping your head up and aligned gives a more refined nose appearance.</li>
+                    </ul>
+                </div>
             </div>
+
             <div class="feature-item">
                 <div class="feature-info">
                     <h2 class="feature-title">🫦 Lips</h2>
@@ -96,7 +168,18 @@
                 <div class="progress-bar">
                     <div class="progress" data-score="8.4"></div>
                 </div>
+                <div class="advice-dropdown">
+                    <h2 class="dropdown-title">Lips Glow-Up Guide</h2>
+                    <ul class="dropdown-points">
+                        <li>Hydrate & Exfoliate – Use a lip scrub and drink enough water to avoid chapped lips.</li>
+                        <li>Lip Care Routine – Apply a nourishing lip balm daily (SPF is a plus!).</li>
+                        <li>Lip Plumping Tricks – Use cinnamon or peppermint oil for a natural plumping effect.</li>
+                        <li>Lip Liner Magic – Slightly overline with a nude lip liner for a fuller look.</li>
+                        <li>Lip Gloss & Tint – A touch of gloss or lip tint enhances your natural lip shape.</li>
+                    </ul>
+                </div>
             </div>
+
             <div class="feature-item">
                 <div class="feature-info">
                     <h2 class="feature-title">😀 Face</h2>
@@ -110,7 +193,18 @@
                 <div class="progress-bar">
                     <div class="progress" data-score="7.6"></div>
                 </div>
+                <div class="advice-dropdown">
+                    <h2 class="dropdown-title">Face Glow-Up Guide</h2>
+                    <ul class="dropdown-points">
+                        <li>Define Your Features – Contour subtly to enhance your best angles.</li>
+                        <li>Facial Massages – Regular gua sha or facial massages improve circulation and shape.</li>
+                        <li>Drink More Water – Hydration helps maintain a fresh, healthy glow.</li>
+                        <li>Reduce Puffiness – Use ice rollers or cold water splashes in the morning.</li>
+                        <li>Confidence Matters – A confident expression makes any face glow instantly!</li>
+                    </ul>
+                </div>
             </div>
+
             <div class="feature-item">
                 <div class="feature-info">
                     <h2 class="feature-title">🧴 Skin</h2>
@@ -124,7 +218,18 @@
                 <div class="progress-bar">
                     <div class="progress" data-score="8.2"></div>
                 </div>
+                <div class="advice-dropdown">
+                    <h2 class="dropdown-title">Skin Glow-Up Guide</h2>
+                    <ul class="dropdown-points">
+                        <li>Follow a Skincare Routine – Cleanse, exfoliate, moisturize, and use SPF daily.</li>
+                        <li>Eat for Your Skin – Foods rich in antioxidants, like berries and nuts, help maintain clear skin.</li>
+                        <li>Hydration is Key – Drinking enough water makes your skin look plump and fresh.</li>
+                        <li>Treat Acne Properly – Use salicylic acid for oily skin, and niacinamide for redness.</li>
+                        <li>Sleep & Recovery – Beauty sleep is real; aim for 7-9 hours for a natural glow.</li>
+                    </ul>
+                </div>
             </div>
+
             <div class="feature-item">
                 <div class="feature-info">
                     <h2 class="feature-title">🧑‍🦲 Chin</h2>
@@ -138,7 +243,18 @@
                 <div class="progress-bar">
                     <div class="progress" data-score="7.5"></div>
                 </div>
+                <div class="advice-dropdown">
+                    <h2 class="dropdown-title">Chin Glow-Up Guide</h2>
+                    <ul class="dropdown-points">
+                        <li>Define Your Chin – Jawline exercises help strengthen and define the area.</li>
+                        <li>Posture Fix – Keeping your head high and back straight enhances chin appearance.</li>
+                        <li>Contour Trick – A slight contour under the chin can create a sharper look.</li>
+                        <li>Lymphatic Drainage – Massaging with gua sha helps reduce bloating in the chin area.</li>
+                        <li>Hydration & Diet – Avoid excess salt and drink plenty of water to reduce puffiness.</li>
+                    </ul>         
+                </div>
             </div>
+
             <div class="feature-item">
                 <div class="feature-info">
                     <h2 class="feature-title">🗿 Jawline</h2>
@@ -152,160 +268,57 @@
                 <div class="progress-bar">
                     <div class="progress" data-score="7.7"></div>
                 </div>
+                <div class="advice-dropdown">
+                    <h2 class="dropdown-title">Jawline Glow-Up Guide</h2>
+                    <ul class="dropdown-points">
+                        <li>Facial Exercises – Jaw exercises like mewing help with definition.</li>
+                        <li>Reduce Water Retention – Avoid excess sodium and drink green tea to prevent bloating.</li>
+                        <li>Proper Diet – Eating lean proteins and chewing gum helps tone jaw muscles.</li>
+                        <li>Contour Smartly – Use bronzer along the jawline to create a sharper effect.</li>
+                        <li>Cold Therapy – Ice rolling helps tighten skin and define the jawline.</li>
+                    </ul>
+                </div>
             </div>
-           
+
+            <!-- Add other features following the same pattern -->
+            <!-- ... (Nose, Lips, Face, Skin, Chin, Jawline sections) ... -->
             
         </section>
-
-        <div id="adviceModal" class="modal">
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <h2 class="modal-title"></h2>
-                <ul class="advice-points"></ul>
-            </div>
-        </div>
     </div>
 
     <script>
-        // Script to add any interactive or dynamic functionality, if needed, after hardcoding data
-        function capitalizeWords(str) {
-            return str.replace(/\b\w/g, char => char.toUpperCase());
-        }
-
-        const adviceData = {
-            eyebrows: {
-                title: "Eyebrows Glow-Up Guide",
-                points: [
-                    "Shape for Your Face – Find a brow shape that complements your face (soft arch for round faces, straight for long faces, etc.).",
-                    "Grooming & Maintenance – Pluck stray hairs or get threading/waxing done professionally.",
-                    "Fill Them Right – Use a brow pencil or powder to fill in sparse areas for a natural look.",
-                    "Brow Growth – Apply castor oil or rosemary oil to promote thicker growth.",
-                    "Highlight Under the Brow – A subtle highlighter under the arch gives a lifted effect."
-                ]
-            },
-            eyes: {
-                title: "Eyes Glow-Up Guide",
-                points: [
-                    "Brighten Dark Circles – Use a caffeine-based eye cream and get enough sleep.",
-                    "Eyelash Care – Use castor oil or a lash serum for thicker, longer lashes.",
-                    "Eye Makeup Enhancement – Apply eyeliner based on your eye shape to make them pop.",
-                    "Whiten Your Eyes – Reduce redness with eye drops and avoid excessive screen time.",
-                    "Eye Exercises – Strengthen eye muscles and reduce strain by practicing focus exercises."
-                ]
-            },
-            nose: {
-                title: "Nose Glow-Up Guide",
-                points: [
-                    "Highlight & Contour – Use light highlighter on the bridge and a soft contour on the sides.",
-                    "Clear Blackheads – Use a clay mask or salicylic acid-based cleanser.",
-                    "Hydration & Moisturizing – Keep your nose skin smooth with a gentle moisturizer.",
-                    "Massage Techniques – Regular massages can slightly improve the shape and definition over time.",
-                    "Posture Awareness – Keeping your head up and aligned gives a more refined nose appearance."
-                ]
-            },
-            lips: {
-                title: "Lips Glow-Up Guide",
-                points: [
-                    "Hydrate & Exfoliate – Use a lip scrub and drink enough water to avoid chapped lips.",
-                    "Lip Care Routine – Apply a nourishing lip balm daily (SPF is a plus!).",
-                    "Lip Plumping Tricks – Use cinnamon or peppermint oil for a natural plumping effect.",
-                    "Lip Liner Magic – Slightly overline with a nude lip liner for a fuller look.",
-                    "Lip Gloss & Tint – A touch of gloss or lip tint enhances your natural lip shape."
-                ]
-            },
-            face: {
-                title: "Face Glow-Up Guide",
-                points: [
-                    "Define Your Features – Contour subtly to enhance your best angles.",
-                    "Facial Massages – Regular gua sha or facial massages improve circulation and shape.",
-                    "Drink More Water – Hydration helps maintain a fresh, healthy glow.",
-                    "Reduce Puffiness – Use ice rollers or cold water splashes in the morning.",
-                    "Confidence Matters – A confident expression makes any face glow instantly!"
-                ]
-            },
-            skin: {
-                title: "Skin Glow-Up Guide",
-                points: [
-                    "Follow a Skincare Routine – Cleanse, exfoliate, moisturize, and use SPF daily.",
-                    "Eat for Your Skin – Foods rich in antioxidants, like berries and nuts, help maintain clear skin.",
-                    "Hydration is Key – Drinking enough water makes your skin look plump and fresh.",
-                    "Treat Acne Properly – Use salicylic acid for oily skin, and niacinamide for redness.",
-                    "Sleep & Recovery – Beauty sleep is real; aim for 7-9 hours for a natural glow."
-                ]
-            },
-            chin: {
-                title: "Chin Glow-Up Guide",
-                points: [
-                    "Define Your Chin – Jawline exercises help strengthen and define the area.",
-                    "Posture Fix – Keeping your head high and back straight enhances chin appearance.",
-                    "Contour Trick – A slight contour under the chin can create a sharper look.",
-                    "Lymphatic Drainage – Massaging with gua sha helps reduce bloating in the chin area.",
-                    "Hydration & Diet – Avoid excess salt and drink plenty of water to reduce puffiness."
-                ]
-            },
-            jawline: {
-                title: "Jawline Glow-Up Guide",
-                points: [
-                    "Facial Exercises – Jaw exercises like mewing help with definition.",
-                    "Reduce Water Retention – Avoid excess sodium and drink green tea to prevent bloating.",
-                    "Proper Diet – Eating lean proteins and chewing gum helps tone jaw muscles.",
-                    "Contour Smartly – Use bronzer along the jawline to create a sharper effect.",
-                    "Cold Therapy – Ice rolling helps tighten skin and define the jawline."
-                ]
-            }
-        };
-
-        // Modal functionality
         document.addEventListener('DOMContentLoaded', function() {
-            const modal = document.getElementById('adviceModal');
-            const modalTitle = modal.querySelector('.modal-title');
-            const modalPoints = modal.querySelector('.advice-points');
-            const closeBtn = modal.querySelector('.close');
+            // Progress bars initialization
+            document.querySelectorAll('.progress').forEach(progressBar => {
+                const score = parseFloat(progressBar.dataset.score) || 
+                            parseFloat(progressBar.closest('.feature-item').querySelector('.score').textContent);
+                progressBar.style.width = (score / 10 * 100) + '%';
+            });
 
-            // Update all view advice links
+            // Dropdown functionality
             document.querySelectorAll('.view-advice').forEach(link => {
-                // Add data-feature attribute to existing HTML
-                const featureTitle = link.closest('.feature-item').querySelector('.feature-title').textContent;
-                const feature = featureTitle.toLowerCase().replace(/[^a-z]/g, '').trim();
-                link.dataset.feature = feature;
-                link.href = "#";
-
                 link.addEventListener('click', function(e) {
                     e.preventDefault();
-                    const featureKey = this.dataset.feature;
-                    const advice = adviceData[featureKey];
-
-                    if (advice) {
-                        modalTitle.textContent = advice.title;
-                        modalPoints.innerHTML = advice.points.map(point => 
-                            `<li>${point}</li>`
-                        ).join('');
-                        modal.style.display = 'block';
-                    }
+                    const featureItem = this.closest('.feature-item');
+                    const dropdown = featureItem.querySelector('.advice-dropdown');
+                    
+                    // Close all other dropdowns
+                    document.querySelectorAll('.advice-dropdown').forEach(d => {
+                        if (d !== dropdown) d.classList.remove('active');
+                    });
+                    
+                    // Toggle current dropdown
+                    dropdown.classList.toggle('active');
                 });
             });
 
-            // Close modal
-            closeBtn.onclick = function() {
-                modal.style.display = 'none';
-            };
-
-            window.onclick = function(e) {
-                if (e.target === modal) {
-                    modal.style.display = 'none';
+            // Close dropdowns when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.feature-item')) {
+                    document.querySelectorAll('.advice-dropdown').forEach(d => {
+                        d.classList.remove('active');
+                    });
                 }
-            };
-        });
-
-        document.addEventListener('DOMContentLoaded', function() {
-            document.querySelectorAll('.progress').forEach(progressBar => {
-                // Get score from either data attribute or text content
-                const score = parseFloat(progressBar.dataset.score) || 
-                            parseFloat(progressBar.closest('.feature-item').querySelector('.score').textContent);
-                
-                // Calculate percentage (score out of 10)
-                const percentage = Math.min((score / 10) * 100, 100);
-                progressBar.style.width = percentage + '%';
             });
         });
     </script>
